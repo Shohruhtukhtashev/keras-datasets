@@ -44,7 +44,7 @@ if models == 'Fashion MNIST':
         cap = label[pre]
         st.title(f"This is {cap}")
         st.image(image, caption=f"Model predict: {cap}")
-        uploaded_file=None
+        uploaded_file = st.file_uploader("Choose a file")
 
 #------------           CIFAR 10        -------------------
 
