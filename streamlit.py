@@ -25,8 +25,8 @@ if models == 'Fashion MNIST':
     model = tf.keras.models.load_model('fashion_mnist.h5')
 
     if uploaded_file is not None:
-        image = Image.open('image/'+f"{uploaded_file.name}")
-        img = cv2.imread('image/'+f"{uploaded_file.name}",cv2.IMREAD_GRAYSCALE)
+        image = Image.open(uploaded_file.name)
+        img = cv2.imread(uploaded_file.name,cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img,(28,28),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
@@ -54,8 +54,8 @@ elif models == 'Cifar10':
     model = tf.keras.models.load_model('cifar10.h5')
 
     if uploaded_file is not None:
-        image = Image.open('image/'+f"{uploaded_file.name}")
-        img = cv2.imread('image/'+f"{uploaded_file.name}")
+        image = Image.open(uploaded_file.name)
+        img = cv2.imread(uploaded_file.name)
         img = cv2.resize(img,(32,32),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
@@ -89,8 +89,8 @@ elif models == 'Cifar100':
     model = tf.keras.models.load_model('cifar100.h5')
 
     if uploaded_file is not None:
-        image = Image.open('image/'+f"{uploaded_file.name}")
-        img = cv2.imread('image/'+f"{uploaded_file.name}")
+        image = Image.open(uploaded_file.name)
+        img = cv2.imread(uploaded_file.name)
         img = cv2.resize(img,(32,32),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
@@ -208,8 +208,8 @@ elif models == 'MNIST':
     model = tf.keras.models.load_model('mnist.h5')
 
     if uploaded_file is not None:
-        image = Image.open('image/'+f"{uploaded_file.name}")
-        img = cv2.imread('image/'+f"{uploaded_file.name}",cv2.IMREAD_GRAYSCALE)
+        image = Image.open(uploaded_file.name)
+        img = cv2.imread(uploaded_file.name,cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img,(28,28),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         st.title(f'This is {pre}')
