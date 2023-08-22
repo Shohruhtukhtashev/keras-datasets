@@ -54,9 +54,12 @@ elif models == 'Cifar10':
     model = tf.keras.models.load_model('cifar10.h5')
 
     if uploaded_file is not None:
+    # Convert the file to an opencv image.
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        opencv_image = cv2.imdecode(file_bytes, 1)
         image = Image.open(uploaded_file.name)
         #img = cv2.imread(uploaded_file.name)
-        img = cv2.resize(np.array(image),(32,32),interpolation=cv2.INTER_AREA)
+        img = cv2.resize(opencv_image,(32,32),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
                     0:'airplane',
