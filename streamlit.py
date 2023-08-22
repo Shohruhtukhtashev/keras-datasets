@@ -55,8 +55,8 @@ elif models == 'Cifar10':
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file.name)
-        img = cv2.imread(uploaded_file.name)
-        img = cv2.resize(img,(32,32),interpolation=cv2.INTER_AREA)
+        #img = cv2.imread(uploaded_file.name)
+        img = cv2.resize(np.array(image),(32,32),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
                     0:'airplane',
