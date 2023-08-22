@@ -26,7 +26,7 @@ if models == 'Fashion MNIST':
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        img = cv2.imread(uploaded_file,cv2.IMREAD_GRAYSCALE)
+        img = cv2.imread(uploaded_file.name,cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img,(28,28),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
