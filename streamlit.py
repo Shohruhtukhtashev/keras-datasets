@@ -57,7 +57,7 @@ elif models == 'Cifar10':
     # Convert the file to an opencv image.
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         opencv_image = cv2.imdecode(file_bytes, 1)
-        image = Image.open(uploaded_file.name)
+        #image = Image.open(uploaded_file.name)
         #img = cv2.imread(uploaded_file.name)
         img = cv2.resize(opencv_image,(32,32),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
@@ -75,7 +75,7 @@ elif models == 'Cifar10':
         }
         cap = label[pre]
         st.title(f"This is {cap}")
-        st.image(image, caption=f"Model predict: {cap}")
+        st.image(opencv_image, caption=f"Model predict: {cap}")
 
 #------------           CIFAR 100        -------------------
 
