@@ -44,7 +44,7 @@ if models == 'Fashion MNIST':
         }
         cap = label[pre]
         st.title(f"This is {cap}")
-        st.image(opencv_image, channels="RGB" caption=f"Model predict: {cap}")
+        st.image(opencv_image, channels="RGB", caption=f"Model predict: {cap}")
 
 #------------           CIFAR 10        -------------------
 
@@ -74,7 +74,7 @@ elif models == 'Cifar10':
         }
         cap = label[pre]
         st.title(f"This is {cap}")
-        st.image(opencv_image, channels="BGR" caption=f"Model predict: {cap}")
+        st.image(opencv_image, channels="BGR", caption=f"Model predict: {cap}")
 
 #------------           CIFAR 100        -------------------
 
@@ -200,7 +200,7 @@ elif models == 'Cifar100':
         }
         cap = label[pre]
         st.title(f"This is {cap}")
-        st.image(opencv_image, channels="RGB" caption=f"Model predict: {cap}")
+        st.image(opencv_image, channels="RGB", caption=f"Model predict: {cap}")
 
 #------------           MNIST        -------------------
 
@@ -217,7 +217,7 @@ elif models == 'MNIST':
         img = cv2.resize(opencv_image,(28,28),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         st.title(f'This is {pre}')
-        st.image(opencv_image, channels="RGB" caption=f"Model predict: {pre}")
+        st.image(opencv_image, channels="RGB", caption=f"Model predict: {pre}")
 
 
 #------------           BOSTON HOUS        -------------------
