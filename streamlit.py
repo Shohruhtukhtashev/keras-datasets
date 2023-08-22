@@ -10,7 +10,7 @@ st.title("Keras models")
 st.write("Select the desired model")
 
 with st.sidebar:
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader("Choose a file", accept_multiple_files=False)
     models = st.radio(
     "Select the desired model",
     ('Boston hous', 'Cifar10', 'Cifar100', 'Fashion MNIST', 'MNIST'))
@@ -229,17 +229,8 @@ elif models == 'Boston hous':
     "% lower status of the population"]
     inputs = []
     
-    # number = st.number_input(inputs_text[0])
-    # st.write('The current number is ', number)
-    # if number!=0:
-    #     inputs.append(number)
-    # number = st.number_input(inputs_text[1])
-    # st.write('The current number is ', number)
-    # if number!=0:
-    #     inputs.append(number)
-    # st.write('The current number is ', inputs)
+   
     
-    #inputs = []
 
     for i in inputs_text:
         number = st.number_input(i)
@@ -248,39 +239,10 @@ elif models == 'Boston hous':
     if st.button('Run'):
         quetion = 1
 
-    # quetion = float(input("Yana o'zgartirish kiritmasangiz? 1 ni kiriting"))
-
     if quetion == 1:
         model = tf.keras.models.load_model('boston_hous_model.h5',compile=False)
         pre = model.predict(np.expand_dims(np.array(inputs),0))
         st.write("Model predict: ",pre.item())
 
-
-#-  -   -   -   -   -   -   -   -   -   -   -   -
-
-# st.title("Fashion MNIST")
-
-# model = tf.keras.models.load_model('model.h5')
-
-
-# if uploaded_file is not None:
-#     image = Image.open('image/'+f"{uploaded_file.name}")
-#     img = cv2.imread('image/'+f"{uploaded_file.name}",cv2.IMREAD_GRAYSCALE)
-#     img = cv2.resize(img,(28,28),interpolation=cv2.INTER_AREA)
-#     pre = np.argmax(model.predict(np.expand_dims(img,0)))
-#     label = {
-#                 0:'T-shirt/top',
-#                 1:'Trouser',
-#                 2:'Pullover',
-#                 3:'Dress',
-#                 4:'Coat',
-#                 5:'Sandal',
-#                 6:'Shirt',
-#                 7:'Sneaker',
-#                 8:'Bag',
-#                 9:'Ankle boot'
-#     }
-#     cap = label[pre]
-#     #st.write(uploaded_file.name)
-#     #model.predict()
-#     st.image(image, caption=f"Model predict: {cap}")
+else:
+    st.write("Faylni yuklab bo'lmadi")
