@@ -10,7 +10,7 @@ st.title("Keras models")
 st.write("Select the desired model")
 
 with st.sidebar:
-    uploaded_file = st.file_uploader("Choose a file", accept_multiple_files=False)
+    uploaded_file = st.file_uploader("Choose a file", type=['png','jpeg','jpg'])
     models = st.radio(
     "Select the desired model",
     ('Boston hous', 'Cifar10', 'Cifar100', 'Fashion MNIST', 'MNIST'))
@@ -25,8 +25,8 @@ if models == 'Fashion MNIST':
     model = tf.keras.models.load_model('fashion_mnist.h5')
 
     if uploaded_file is not None:
-        image = Image.open(uploaded_file.name)
-        img = cv2.imread(uploaded_file.name,cv2.IMREAD_GRAYSCALE)
+        image = Image.open(uploaded_file)
+        img = cv2.imread(uploaded_file,cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img,(28,28),interpolation=cv2.INTER_AREA)
         pre = np.argmax(model.predict(np.expand_dims(img,0)))
         label = {
